@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "nextbooking/admin/register",
-    element: <Register />,  
+    element: <Register />,
   },
   {
     path: "nextbooking/admin/login",
