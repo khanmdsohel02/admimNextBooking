@@ -31,7 +31,7 @@ const Login = () => {
         credentials
       );
 
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.userDetails });
       // localStorage.setItem("user", JSON.stringify(res.data));
       setLoading(false);
       navigate("/dashboard");
