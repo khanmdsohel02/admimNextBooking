@@ -31,7 +31,7 @@ const AllUsers = () => {
     setDeleteLoading((prev) => ({ ...prev, [userId]: true }));
     try {
       await axios.delete(
-        `https://nextbooking-ten.vercel.app/api/api/users/${userId}`
+        `https://nextbooking-ten.vercel.app/api/users/${userId}`
       );
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
       setDeleteLoading((prev) => ({ ...prev, [userId]: false }));

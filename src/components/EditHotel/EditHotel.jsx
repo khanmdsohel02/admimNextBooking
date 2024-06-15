@@ -51,7 +51,7 @@ const EditHotel = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `https://nextbooking-ten.vercel.app/api/api/hotels/${id}`,
+        `https://nextbooking-ten.vercel.app/api/hotels/${id}`,
         hotel
       );
       navigate("/hotels");
