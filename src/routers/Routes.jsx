@@ -16,11 +16,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <PrivateRoute>
-        <Dashboard />
-      </PrivateRoute>
-    ),
+    element: <Dashboard />,
     children: [
       {
         path: "/dashboard",

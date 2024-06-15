@@ -24,7 +24,7 @@ const EditRoom = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://nextbooking-ten.vercel.app/rooms/${id}`
+          `https://nextbooking-ten.vercel.app/api/rooms/${id}`
         );
         setFetchedRoom(response.data); // Store fetched room data in state
         setRoom(response.data); // Initialize form with fetched room data
@@ -61,7 +61,10 @@ const EditRoom = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put(`https://nextbooking-ten.vercel.app/rooms/${id}`, room);
+      await axios.put(
+        `https://nextbooking-ten.vercel.app/api/rooms/${id}`,
+        room
+      );
       setLoading(false);
       navigate("/rooms"); // Redirect to home page after successful update
       toast.success("Room updated successfully");

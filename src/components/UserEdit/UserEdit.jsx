@@ -18,7 +18,7 @@ const UserEdit = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://nextbooking-ten.vercel.app/users/${id}`
+          `https://nextbooking-ten.vercel.app/api/users/${id}`
         );
         setUser(response.data);
         setLoading(false);
@@ -44,7 +44,10 @@ const UserEdit = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put(`https://nextbooking-ten.vercel.app/users/${id}`, user);
+      await axios.put(
+        `https://nextbooking-ten.vercel.app/api/users/${id}`,
+        user
+      );
       setLoading(false);
       navigate("/users");
     } catch (error) {

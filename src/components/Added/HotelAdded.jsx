@@ -64,7 +64,7 @@ const HotelAdded = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://nextbooking-ten.vercel.app/hotels",
+        "https://nextbooking-ten.vercel.app/api/hotels",
         formData
       );
       console.log("Hotel added successfully:", response.data);

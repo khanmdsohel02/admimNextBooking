@@ -13,7 +13,7 @@ const AllUsers = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          "https://nextbooking-ten.vercel.app/users"
+          "https://nextbooking-ten.vercel.app/api/users"
         );
         setUsers(response.data);
         setLoading(false);
@@ -30,7 +30,9 @@ const AllUsers = () => {
   const handleDelete = async (userId) => {
     setDeleteLoading((prev) => ({ ...prev, [userId]: true }));
     try {
-      await axios.delete(`https://nextbooking-ten.vercel.app/users/${userId}`);
+      await axios.delete(
+        `https://nextbooking-ten.vercel.app/api/users/${userId}`
+      );
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
       setDeleteLoading((prev) => ({ ...prev, [userId]: false }));
     } catch (error) {

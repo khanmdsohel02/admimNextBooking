@@ -10,7 +10,7 @@ const AllHotels = () => {
     const fetchHotels = async () => {
       try {
         const response = await axios.get(
-          "https://nextbooking-ten.vercel.app/hotels"
+          "https://nextbooking-ten.vercel.app/api/hotels"
         );
         setHotels(response.data);
       } catch (error) {
@@ -29,7 +29,7 @@ const AllHotels = () => {
   const handleDelete = async (hotelId) => {
     try {
       await axios.delete(
-        `https://nextbooking-ten.vercel.app/hotels/${hotelId}`
+        `https://nextbooking-ten.vercel.app/api/hotels/${hotelId}`
       );
       setHotels(hotels.filter((hotel) => hotel._id !== hotelId));
     } catch (error) {

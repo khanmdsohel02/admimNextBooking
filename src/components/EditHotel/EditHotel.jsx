@@ -26,7 +26,7 @@ const EditHotel = () => {
     const fetchHotel = async () => {
       try {
         const response = await axios.get(
-          `https://nextbooking-ten.vercel.app/hotels/${id}`
+          `https://nextbooking-ten.vercel.app/api/hotels/${id}`
         );
         setFetchedHotel(response.data);
         setHotel(response.data); // Setting hotel state with fetched data
@@ -49,7 +49,10 @@ const EditHotel = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://nextbooking-ten.vercel.app/hotels/${id}`, hotel);
+      await axios.put(
+        `https://nextbooking-ten.vercel.app/api/hotels/${id}`,
+        hotel
+      );
       navigate("/hotels");
       toast.success("Hotel updated successfully");
     } catch (error) {

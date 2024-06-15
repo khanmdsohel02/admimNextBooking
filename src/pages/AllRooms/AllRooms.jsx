@@ -13,7 +13,7 @@ const AllRooms = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          "https://nextbooking-ten.vercel.app/rooms"
+          "https://nextbooking-ten.vercel.app/api/rooms"
         );
         setRooms(response.data);
         setLoading(false);
@@ -31,7 +31,7 @@ const AllRooms = () => {
     setDeleteLoading((prev) => ({ ...prev, [roomId]: true }));
     try {
       await axios.delete(
-        `https://nextbooking-ten.vercel.app/rooms/${roomId}/${hotelId}`
+        `https://nextbooking-ten.vercel.app/api/rooms/${roomId}/${hotelId}`
       );
       setRooms((prevRooms) => prevRooms.filter((room) => room._id !== roomId));
       setDeleteLoading((prev) => ({ ...prev, [roomId]: false }));

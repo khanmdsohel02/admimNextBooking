@@ -17,7 +17,7 @@ const RoomAdded = () => {
     const fetchHotels = async () => {
       try {
         const response = await axios.get(
-          "https://nextbooking-ten.vercel.app/hotels"
+          "https://nextbooking-ten.vercel.app/api/hotels"
         );
         setHotels(response.data);
       } catch (error) {
@@ -66,7 +66,7 @@ const RoomAdded = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `https://nextbooking-ten.vercel.app/rooms/${formData.hotelId}`,
+        `https://nextbooking-ten.vercel.app/api/rooms/${formData.hotelId}`,
         formData
       );
       console.log("Room added successfully:", response.data);
