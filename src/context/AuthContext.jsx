@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useReducer } from "react";
+import Cookies from "js-cookie";
 
 const INITIAL_STATE = {
   user: (() => {

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaCircleXmark } from "react-icons/fa6";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const EditHotel = () => {
   const [hotel, setHotel] = useState({
@@ -50,10 +51,11 @@ const EditHotel = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `https://nextbooking-ten.vercel.app/api/hotels/${id}`,
+        `https://nextbooking-ten.vercel.app/api/api/hotels/${id}`,
         hotel
       );
       navigate("/hotels");
+
       toast.success("Hotel updated successfully");
     } catch (error) {
       console.error("Error updating hotel data:", error);

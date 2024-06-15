@@ -10,7 +10,7 @@ const AllHotels = () => {
     const fetchHotels = async () => {
       try {
         const response = await axios.get(
-          "https://nextbooking-ten.vercel.app/api/hotels"
+          "https://nextbooking-ten.vercel.app/api/api/hotels"
         );
         setHotels(response.data);
       } catch (error) {

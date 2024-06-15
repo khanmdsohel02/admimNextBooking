@@ -21,16 +21,18 @@ const Login = () => {
     }));
   };
 
+  // https://nextbooking-ten.vercel.app/api/
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://nextbooking-ten.vercel.app/api/auth/login",
+        "https://nextbooking-ten.vercel.app/api/api/auth/login",
         credentials
       );
+
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      localStorage.setItem("user", JSON.stringify(res.data));
+      // localStorage.setItem("user", JSON.stringify(res.data));
       setLoading(false);
       navigate("/dashboard");
     } catch (error) {
