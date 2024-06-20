@@ -10,63 +10,64 @@ import EditRoom from "../components/EditRoom/EditRoom";
 import UserEdit from "../components/UserEdit/UserEdit";
 import Register from "../components/Register/Register";
 import Login from "../components/Login/Login";
-import NextBooking from "../components/NextBooking";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import NextBooking from "../components/NextBooking";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
-    children: [
-      {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <NextBooking />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/users",
-        element: <AllUsers />,
-      },
-      {
-        path: "/hotels",
-        element: <AllHotels />,
-      },
-      {
-        path: "/rooms",
-        element: <AllRooms />,
-      },
-      {
-        path: "/add-hotel",
-        element: <HotelAdded />,
-      },
-      {
-        path: "/add-room",
-        element: <RoomAdded />,
-      },
-      {
-        path: "/edit-hotel/:id",
-        element: <EditHotel />,
-      },
-      {
-        path: "/edit-room/:id",
-        element: <EditRoom />,
-      },
-      {
-        path: "/edit-user/:id",
-        element: <UserEdit />,
-      },
-    ],
+    element: <Login />,
   },
+
   {
-    path: "nextbooking/admin/register",
+    path: "/admin/register",
     element: <Register />,
   },
   {
-    path: "nextbooking/admin/login",
-    element: <Login />,
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <NextBooking />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <AllUsers />,
+      },
+      {
+        path: "/dashboard/hotels",
+        element: <AllHotels />,
+      },
+      {
+        path: "/dashboard/rooms",
+        element: <AllRooms />,
+      },
+      {
+        path: "/dashboard/add-hotel",
+        element: <HotelAdded />,
+      },
+      {
+        path: "/dashboard/add-room",
+        element: <RoomAdded />,
+      },
+      {
+        path: "/dashboard/hotels/edit-hotel/:id",
+        element: <EditHotel />,
+      },
+      {
+        path: "/dashboard/rooms/edit-room/:id",
+        element: <EditRoom />,
+      },
+      {
+        path: "/dashboard/user/edit-user/:id",
+        element: <UserEdit />,
+      },
+    ],
   },
   {
     path: "*",

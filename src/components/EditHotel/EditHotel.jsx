@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaCircleXmark } from "react-icons/fa6";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
 
 const EditHotel = () => {
   const [hotel, setHotel] = useState({
@@ -54,7 +53,7 @@ const EditHotel = () => {
         `https://nextbooking-ten.vercel.app/api/hotels/${id}`,
         hotel
       );
-      navigate("/hotels");
+      navigate(-1);
 
       toast.success("Hotel updated successfully");
     } catch (error) {
@@ -92,31 +91,51 @@ const EditHotel = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Hotel Type</span>
+                  <span className="label-text">Select Hotel Type</span>
                 </label>
-                <input
+                <select
                   name="type"
-                  type="text"
                   defaultValue={fetchedHotel?.type}
                   onChange={handleChange}
-                  placeholder="Hotel Type"
-                  className="input input-bordered"
+                  className="select select-bordered"
                   required
-                />
+                >
+                  <option value={fetchedHotel?.type}>
+                    {fetchedHotel?.type}
+                  </option>
+                  <option value="hotel">Hotel</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="villa">Villa</option>
+                  <option value="resort">Resort</option>
+                  <option value="cabin">Cabin</option>
+                </select>
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">City</span>
+                  <span className="label-text">Select City</span>
                 </label>
-                <input
+                <select
                   name="city"
-                  type="text"
                   defaultValue={fetchedHotel?.city}
                   onChange={handleChange}
-                  placeholder="City"
-                  className="input input-bordered"
+                  className="select select-bordered"
                   required
-                />
+                >
+                  <option value={fetchedHotel?.city}>
+                    {fetchedHotel?.city}
+                  </option>
+                  <option value="Dhaka">Dhaka</option>
+                  <option value="Chattogram">Chattogram</option>
+                  <option value="Sylhet">Sylhet</option>
+                  <option value="Rajshahi">Rajshahi</option>
+                  <option value="Bandarban">Bandarban</option>
+                  <option value="Rangpur">Rangpur</option>
+                  <option value="Kishoreganj">Kishoreganj</option>
+                  <option value="Pabna">Pabna</option>
+                  <option value="Narayanganj">Narayanganj</option>
+                  <option value="Khulna">Khulna</option>
+                  <option value="Barishal">Barishal</option>
+                </select>
               </div>
               <div className="form-control">
                 <label className="label">

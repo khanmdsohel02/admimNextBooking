@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useReducer } from "react";
-import Cookies from "js-cookie";
 
 const INITIAL_STATE = {
   user: (() => {
     try {
       return JSON.parse(localStorage.getItem("user")) || null;
     } catch (error) {
-      console.error("Failed to parse user from localStorage", error);
       return null;
     }
   })(),

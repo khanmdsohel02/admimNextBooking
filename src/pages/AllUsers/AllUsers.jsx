@@ -83,7 +83,7 @@ const AllUsers = () => {
                     </td>
                     <td className="py-3 px-6 text-left">
                       <Link
-                        to={`/edit-user/${user._id}`}
+                        to={`/dashboard/user/edit-user/${user._id}`}
                         className="bg-green-500 text-white px-3 py-1 rounded mr-2 hover:bg-green-600 transition duration-200"
                       >
                         Edit

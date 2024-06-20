@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -27,14 +28,20 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://nextbooking-ten.vercel.app/api/auth/login",
+        "http://localhost:5500/api/auth/login",
         credentials
       );
 
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.userDetails });
-      // localStorage.setItem("user", JSON.stringify(res.data));
-      setLoading(false);
-      navigate("/dashboard");
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      localStorage.setItem("user", JSON.stringify(res.data));
+      if (res.data.details.isAdmin) {
+        navigate("/dashboard");
+        setLoading(false);
+      } else if (!res.data.details.isAdmin) {
+        navigate("/admin/register");
+        toast.error("Your are not Admin");
+        setLoading(false);
+      }
     } catch (error) {
       setError("Invalid username or password.");
       setLoading(false);
@@ -71,10 +78,7 @@ const Login = () => {
             />
           </div>
           <div className="flex justify-between">
-            <Link
-              to="/nextbooking/admin/register"
-              className="text-blue-500 underline"
-            >
+            <Link to="/admin/register" className="text-blue-500 underline">
               Dont have an account? Register here.
             </Link>
 

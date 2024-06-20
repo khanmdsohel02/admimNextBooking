@@ -4,12 +4,12 @@ const SidebarLinks = () => {
   return (
     <>
       <li>
-        <Link to="/">Dashboard</Link>
-        <Link to="/users">Users</Link>
-        <Link to="/hotels">All Hotels</Link>
-        <Link to="/rooms">All Rooms</Link>
-        <Link to="/add-hotel">Add Hotels</Link>
-        <Link to="/add-room">Add Rooms</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/dashboard/users">Users</Link>
+        <Link to="/dashboard/hotels">All Hotels</Link>
+        <Link to="/dashboard/rooms">All Rooms</Link>
+        <Link to="/dashboard/add-hotel">Add Hotels</Link>
+        <Link to="/dashboard/add-room">Add Rooms</Link>
       </li>
     </>
   );

@@ -6,7 +6,11 @@ const PrivateRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  return user ? children : navigate("/nextbooking/admin/login");
+  if (user) {
+    return children;
+  } else {
+    return navigate("/admin/register");
+  }
 };
 
 export default PrivateRoute;

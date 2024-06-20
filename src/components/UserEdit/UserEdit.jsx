@@ -49,7 +49,7 @@ const UserEdit = () => {
         user
       );
       setLoading(false);
-      navigate("/users");
+      navigate(-1);
     } catch (error) {
       console.error("Error updating user:", error);
       setError("Failed to update user.");
@@ -90,8 +90,7 @@ const UserEdit = () => {
                 required
               />
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700">Admin</label>
+            <div className="mb-4 flex items-center gap-3">
               <input
                 type="checkbox"
                 name="isAdmin"
@@ -99,6 +98,7 @@ const UserEdit = () => {
                 onChange={handleChange}
                 className="form-checkbox h-5 w-5 text-blue-600"
               />
+              <label className="block text-gray-700">Make Admin </label>
             </div>
             <div className="flex justify-end">
               <button

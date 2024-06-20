@@ -23,7 +23,7 @@ const AllHotels = () => {
 
   const handleEdit = (hotelId) => {
     // Navigate to the edit page with the hotel ID
-    navigate(`/edit-hotel/${hotelId}`);
+    navigate(`/dashboard/hotels/edit-hotel/${hotelId}`);
   };
 
   const handleDelete = async (hotelId) => {

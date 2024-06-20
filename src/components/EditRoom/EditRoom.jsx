@@ -170,6 +170,7 @@ const EditRoom = () => {
                       data-index={index}
                       placeholder="Unavailable Dates (comma separated)"
                       className="input input-bordered w-1/2"
+                      disabled
                     />
                   </div>
                 ))}

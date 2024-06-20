@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -25,14 +25,16 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(
-        "https://nextbooking-ten.vercel.app/api/auth/register",
-        credentials
-      );
+      await axios.post("http://localhost:5500/api/auth/register", credentials);
       setLoading(false);
-      navigate("/nextbooking/admin/login");
+      navigate("/");
     } catch (error) {
-      console.error("Error registering user:", error);
+      // console.error("Error registering user:", error.message);
+      if (error.response.data.includes("E11000")) {
+        setError("User already exists.");
+        setLoading(false);
+        return;
+      }
       setError("Failed to register user.");
       setLoading(false);
     }
@@ -78,8 +80,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Admin</label>
+          <div className="mb-4 flex items-center gap-4">
             <input
               type="checkbox"
               name="isAdmin"
@@ -87,8 +88,12 @@ const Register = () => {
               onChange={handleChange}
               className="form-checkbox h-5 w-5 text-blue-600"
             />
+            <label className="block text-gray-700">Register as Admin</label>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-between">
+            <Link to="/" className="text-blue-500 underline">
+              Already have an account? Login here.
+            </Link>
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
