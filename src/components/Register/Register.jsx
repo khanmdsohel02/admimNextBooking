@@ -25,7 +25,10 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5500/api/auth/register", credentials);
+      await axios.post(
+        "https://nextbooking-ten.vercel.app/api/auth/register",
+        credentials
+      );
       setLoading(false);
       navigate("/");
     } catch (error) {
